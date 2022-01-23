@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface ICategoryDal : IEntityRepository<Category>
+   public interface IOrderDal : IEntityRepository<Order>//yani sen sql cümleciklerini tutacaksın 
     {
 
     }

@@ -1,4 +1,4 @@
-﻿using Entities.Abstract;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,16 +6,15 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Abstract
+namespace Core.DataAccess
 {
     //Generic Constraint
-   public interface IEntityRepository<T> where 
-       T:class, //Referans tip olabilir int sttring olarak yazamaz
-       IEntity, //YA IENTİTY OLABİLİR YA DA İMPLEMENT EDEN BİR NESNE
-       new ()    // Newlenebilir olmalı
-
+    public interface IEntityRepository<T> where
+        T : class, //Referans tip olabilir int sttring olarak yazamaz
+        IEntity, //YA IENTİTY OLABİLİR YA DA İMPLEMENT EDEN BİR NESNE
+        new()    // Newlenebilir olmalı
     {
-        List<T> GetAll(Expression<Func<T,bool>> filter=null); //filtre vermesende olur 
+        List<T> GetAll(Expression<Func<T, bool>> filter = null); //filtre vermesende olur 
         T Get(Expression<Func<T, bool>> filter);//filre zorunlu p=>p ...
         void Add(T entity);
         void Update(T entity);
