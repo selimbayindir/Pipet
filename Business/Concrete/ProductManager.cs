@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -19,7 +20,19 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
-    
+        public IResult Add(Product product)
+        {
+            _productDal.Add(product);
+            return new SuccessResult /*Result*/(/*true,"Urun Kaydı Yapılmıştır"*/); //bunu yapabilmenin yolu constructor dır.
+            //Result : Genetate Constructot with field
+
+            /*
+            if (product.ProductName.Length<2)
+            {
+                return new ErrorResult("Urun Adı 2 en az 2 karakter olmalıdır  .. ");
+            }
+            _productDal.Add(product);*/
+        }
 
         public List<Product> GetAll()
         {
@@ -31,6 +44,11 @@ namespace Business.Concrete
         public List<Product> GetAllByCategoryId(int id)
         {
             return _productDal.GetAll(p => p.CategoryId == id);
+        }
+
+        public Product GetById(int productId)
+        {
+            return _productDal.Get(p => p.ProductId == productId);   
         }
 
         public List<Product> GetByUnitPrice(decimal min, decimal max)

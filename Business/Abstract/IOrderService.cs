@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    interface IOrderService
+    public interface IOrderService
     {
     }
 }
