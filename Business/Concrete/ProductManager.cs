@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -23,7 +24,9 @@ namespace Business.Concrete
         public IResult Add(Product product)
         {
             _productDal.Add(product);
-            return new SuccessResult /*Result*/(/*true,"Urun Kaydı Yapılmıştır"*/); //bunu yapabilmenin yolu constructor dır.
+            return new SuccessResult(Messages.ProductAdded);
+                
+              ///  /*Result*/(/*true,"Urun Kaydı Yapılmıştır");*/ //bunu yapabilmenin yolu constructor dır.
             //Result : Genetate Constructot with field
 
             /*
