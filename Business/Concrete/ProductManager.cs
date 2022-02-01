@@ -23,18 +23,20 @@ namespace Business.Concrete
 
         public IResult Add(Product product)
         {
-            _productDal.Add(product);
-            return new SuccessResult(Messages.ProductAdded);
+            //_productDal.Add(product);
+            //return new SuccessResult(Messages.ProductAdded);
                 
               ///  /*Result*/(/*true,"Urun Kaydı Yapılmıştır");*/ //bunu yapabilmenin yolu constructor dır.
             //Result : Genetate Constructot with field
 
-            /*
+            
             if (product.ProductName.Length<2)
             {
-                return new ErrorResult("Urun Adı 2 en az 2 karakter olmalıdır  .. ");
+                return new ErrorResult(Messages.ProductNameInvalid);
             }
-            _productDal.Add(product);*/
+            _productDal.Add(product);
+
+            return new SuccessResult(Messages.ProductAdded);
         }
 
         public List<Product> GetAll()
@@ -62,6 +64,11 @@ namespace Business.Concrete
         public List<ProductDetailDto> GetProductDetails()
         {
             return _productDal.GetProductDetails();
+        }
+
+        IDataResult<List<Product>> IProductService.GetAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }
